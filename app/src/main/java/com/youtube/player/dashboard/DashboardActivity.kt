@@ -1,12 +1,12 @@
 package com.youtube.player.dashboard
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.transition.Transition
 import android.transition.TransitionManager
-
 
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
@@ -29,12 +29,15 @@ import com.youtube.player.timber.Timber
 import com.youtube.player.trending.TrendingFragment
 import com.youtube.player.useractivity.UserActivityFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_player.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 
 /**
  * Created by Burhanuddin Rashid on 2/25/2018.
  */
+@SuppressLint("Registered")
+@Suppress("SYNTHETIC_UNRESOLVED_WIDGET_TYPE")
 class DashboardActivity : BaseActivity(), GestureEvents {
 
 

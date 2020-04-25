@@ -5,6 +5,7 @@ import com.youtube.player.timber.Timber
 import java.io.IOException
 import java.util.regex.Pattern
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class ApiResponse<T> {
     val code: Int
     val body: T?

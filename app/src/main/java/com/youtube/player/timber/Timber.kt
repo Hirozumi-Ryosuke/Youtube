@@ -10,6 +10,7 @@ import java.util.Collections.unmodifiableList
 import java.util.regex.Pattern
 import kotlin.collections.ArrayList
 
+@Suppress("CYCLIC_SCOPES_WITH_COMPANION", "NAME_SHADOWING")
 class Timber private constructor() {
     init {
         throw AssertionError()
