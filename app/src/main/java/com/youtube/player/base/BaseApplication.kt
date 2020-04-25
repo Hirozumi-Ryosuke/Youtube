@@ -1,8 +1,10 @@
 package com.youtube.player.base
 
 import android.app.Application
+import androidx.multidex.BuildConfig
 import com.youtube.player.di.components.BaseNetworkComponent
 import com.youtube.player.di.modules.BaseAppModule
+import com.youtube.player.timber.Timber
 
 
 open class BaseApplication : Application() {

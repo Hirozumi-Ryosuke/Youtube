@@ -13,6 +13,7 @@ import com.youtube.player.dashboard.DashboardViewModel
 import com.youtube.player.timber.Timber
 import kotlinx.android.synthetic.main.fragment_home.*
 
+@Suppress("SYNTHETIC_UNRESOLVED_WIDGET_TYPE")
 class HomeFragment @SuppressLint("ValidFragment")
 private constructor() : BaseFragment() {
 

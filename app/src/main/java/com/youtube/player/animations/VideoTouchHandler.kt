@@ -56,69 +56,88 @@ class VideoTouchHandler(activity: Activity, private var gestureEventsListener: G
             gestureEventsListener.onClick(view)
             //return only when player is more than threshold value i.e is already expanded
             if (percentVertical > SCALE_THRESHOLD) return true
-        }
+        }//dismiss the video player
+        //Don't expand video when user is swiping the video when its not expanded
 
-        if (!isEnabled) {
+        //set up/down flag to avoid swipe scroll
+        //scaleVideo(percentVertical)
+
+        //Don't perform swipe if video frame is expanded or scrolling up/down
+
+        //set swipe flag to avoid up/down scroll
+        //Prevent guidelines to go out of screen bound
+        //swipeVideo(percentHorizontal)
+        if (!isEnabled) return true
+        else {
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    startX = event.rawX
+                    startY = event.rawY
+                    dX = view.x - startX
+                    dY = view.y - startY
+
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    percentVertical = (event.rawY + dY) / deviceHeight.toFloat()
+                    val percentHorizontal = (event.rawX + dX) / deviceWidth.toFloat()
+
+                    when (getDirection(
+                        startX = startX,
+                        startY = startY,
+                        endX = event.rawX,
+                        endY = event.rawY
+                    )) {
+                        is Direction.LEFT, is Direction.RIGHT -> {
+
+                            //Don't perform swipe if video frame is expanded or scrolling up/down
+                            if (!(!isTopScroll && !isExpanded)) return false
+
+                            //set swipe flag to avoid up/down scroll
+                            isSwipeScroll = true
+                            //Prevent guidelines to go out of screen bound
+                            val percentHorizontalMoved = Math.max(
+                                -0.25F,
+                                Math.min(
+                                    VideoTouchHandler.MIN_HORIZONTAL_LIMIT,
+                                    percentHorizontal
+                                )
+                            )
+                            percentMarginMoved =
+                                percentHorizontalMoved + (VideoTouchHandler.MIN_MARGIN_END_LIMIT - VideoTouchHandler.MIN_HORIZONTAL_LIMIT)
+
+                            Timber.e("" + percentHorizontal)
+
+                            gestureEventsListener.onSwipe(percentHorizontal)
+                            //swipeVideo(percentHorizontal)
+                        }
+                        is Direction.UP, is Direction.DOWN, is Direction.NONE -> {
+
+                            //Don't expand video when user is swiping the video when its not expanded
+                            if (isSwipeScroll) return false
+
+                            //set up/down flag to avoid swipe scroll
+                            isTopScroll = true
+                            gestureEventsListener.onScale(percentVertical)
+                            //scaleVideo(percentVertical)
+                        }
+                    }
+                }
+                MotionEvent.ACTION_UP -> {
+                    Timber.d("Up Percent $percentVertical")
+                    isTopScroll = false
+                    isSwipeScroll = false
+                    if (percentMarginMoved < 0.5) {
+                        //dismiss the video player
+                        gestureEventsListener.onDismiss(view)
+                        resetValues()
+                    } else {
+                        isExpanded = percentVertical < SCALE_THRESHOLD
+                    }
+                }
+            }
             return true
         }
 
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                startX = event.rawX
-                startY = event.rawY
-                dX = view.x - startX
-                dY = view.y - startY
-
-            }
-
-            MotionEvent.ACTION_MOVE -> {
-                percentVertical = (event.rawY + dY) / deviceHeight.toFloat()
-                val percentHorizontal = (event.rawX + dX) / deviceWidth.toFloat()
-
-                when (getDirection(startX = startX, startY = startY, endX = event.rawX, endY = event.rawY)) {
-                    is Direction.LEFT, is Direction.RIGHT -> {
-
-                        //Don't perform swipe if video frame is expanded or scrolling up/down
-                        if (!(!isTopScroll && !isExpanded)) return false
-
-                        //set swipe flag to avoid up/down scroll
-                        isSwipeScroll = true
-                        //Prevent guidelines to go out of screen bound
-                        val percentHorizontalMoved = Math.max(-0.25F, Math.min(VideoTouchHandler.MIN_HORIZONTAL_LIMIT, percentHorizontal))
-                        percentMarginMoved = percentHorizontalMoved + (VideoTouchHandler.MIN_MARGIN_END_LIMIT - VideoTouchHandler.MIN_HORIZONTAL_LIMIT)
-
-                        Timber.e("" + percentHorizontal)
-
-                        gestureEventsListener.onSwipe(percentHorizontal)
-                        //swipeVideo(percentHorizontal)
-                    }
-                    is Direction.UP, is Direction.DOWN, is Direction.NONE -> {
-
-                        //Don't expand video when user is swiping the video when its not expanded
-                        if (isSwipeScroll) return false
-
-                        //set up/down flag to avoid swipe scroll
-                        isTopScroll = true
-                        gestureEventsListener.onScale(percentVertical)
-                        //scaleVideo(percentVertical)
-                    }
-                }
-            }
-
-            MotionEvent.ACTION_UP -> {
-                Timber.d("Up Percent $percentVertical")
-                isTopScroll = false
-                isSwipeScroll = false
-                if (percentMarginMoved < 0.5) {
-                    //dismiss the video player
-                    gestureEventsListener.onDismiss(view)
-                    resetValues()
-                } else {
-                    isExpanded = percentVertical < SCALE_THRESHOLD
-                }
-            }
-        }
-        return true
     }
 
     //Setup direction types from Direction sealed class

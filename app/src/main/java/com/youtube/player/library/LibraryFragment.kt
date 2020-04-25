@@ -1,5 +1,6 @@
 package com.youtube.player.library
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import com.youtube.R
@@ -15,6 +16,7 @@ class LibraryFragment : BaseFragment() {
 
     override fun getLayoutId() = R.layout.fragment_trending
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         txtLabel.text = "Videos Library"
