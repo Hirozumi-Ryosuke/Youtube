@@ -10,6 +10,7 @@ import com.youtube.player.base.getActivityViewModel
 import com.youtube.player.base.repo.Status
 import com.youtube.player.base.widgets.SimpleDividerItemDecoration
 import com.youtube.player.dashboard.DashboardViewModel
+import com.youtube.player.timber.Timber
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment @SuppressLint("ValidFragment")

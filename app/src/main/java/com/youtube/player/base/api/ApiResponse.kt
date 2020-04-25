@@ -1,6 +1,7 @@
 package com.youtube.player.base.api
 
 import android.util.ArrayMap
+import com.youtube.player.timber.Timber
 import java.io.IOException
 import java.util.regex.Pattern
 

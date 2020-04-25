@@ -1,8 +1,8 @@
 object Versions {
-    var application_id = "com.burhanrashid52.player"
+    var application_id = "com.youtube"
     var version_code = 1
     var version_name = "1.0"
-    var compile_sdk_version = 27
+    var compile_sdk_version = 29
     var target_sdk_version = 27
     var min_sdk_version = 17
 

@@ -6,6 +6,7 @@ import android.content.res.Resources
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import com.youtube.player.timber.Timber
 
 class VideoTouchHandler(activity: Activity, private var gestureEventsListener: GestureEvents) : View.OnTouchListener {
 

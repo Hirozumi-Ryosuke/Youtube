@@ -13,6 +13,9 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
 
     @Inject
     lateinit var moviesRepository: MoviesRepository
+
+    annotation class Inject
+
     val movies: LiveData<Resource<List<Movies>>>
     val moviesSelectionListener = SingleLiveEvent<Movies>()
     val controllersListener = SingleLiveEvent<ViewsEvents>()

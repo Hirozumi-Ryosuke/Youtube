@@ -25,11 +25,11 @@ import com.youtube.player.library.LibraryFragment
 import com.youtube.player.player.VideoDetailsFragment
 import com.youtube.player.player.VideoPlayerFragment
 import com.youtube.player.subscriptions.SubscriptionFragment
+import com.youtube.player.timber.Timber
 import com.youtube.player.trending.TrendingFragment
 import com.youtube.player.useractivity.UserActivityFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
-import timber.log.Timber
 
 
 /**

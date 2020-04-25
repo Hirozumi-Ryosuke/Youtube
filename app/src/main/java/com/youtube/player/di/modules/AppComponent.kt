@@ -1,9 +1,11 @@
 package com.youtube.player.di.modules
 
 import android.app.Application
-import player.data.local.AppDatabase
-import player.data.remote.WebService
-import player.di.scopes.AppScope
+import androidx.room.Room
+import com.youtube.player.data.local.AppDatabase
+import com.youtube.player.data.remote.WebService
+import com.youtube.player.di.scopes.AppScope
+
 
 @Module
 class AppComponent {

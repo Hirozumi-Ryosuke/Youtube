@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.constraintlayout.solver.Cache
+import com.youtube.player.di.scopes.BaseScope
 
 @Module
 class BaseNetworkModule {
