@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.youtube.R
 import com.youtube.player.data.local.Movies
-import player.data.local.Movies
 
 class HomeAdapter(private val listener: ((Movies) -> Unit)? = null) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 

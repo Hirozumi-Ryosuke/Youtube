@@ -4,7 +4,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import player.base.api.ApiResponse
+import com.youtube.player.base.api.ApiResponse
 
 abstract class NetworkBoundResource<ResultType, RequestType> @MainThread
 constructor(private val appExecutors: AppExecutors) {

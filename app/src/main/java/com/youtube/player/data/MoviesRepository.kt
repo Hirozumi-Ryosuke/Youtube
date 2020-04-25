@@ -1,10 +1,14 @@
 package com.youtube.player.data
 
 import androidx.lifecycle.LiveData
-import player.data.local.Movies
-import player.data.local.MoviesDao
-import player.data.local.MoviesSource
-import player.data.remote.WebService
+import com.youtube.player.base.repo.AppExecutors
+import com.youtube.player.base.repo.NetworkBoundResource
+import com.youtube.player.base.repo.Resource
+import com.youtube.player.data.local.Movies
+import com.youtube.player.data.local.MoviesDao
+import com.youtube.player.data.local.MoviesSource
+import com.youtube.player.data.remote.WebService
+
 
 class MoviesRepository @Inject constructor(val moviesDao: MoviesDao,
                                            val webService: WebService

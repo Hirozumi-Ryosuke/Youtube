@@ -1,5 +1,7 @@
 package com.youtube.player.base.repo
 
+import androidx.room.*
+
 @Dao
 interface BaseDao<in T> {
 

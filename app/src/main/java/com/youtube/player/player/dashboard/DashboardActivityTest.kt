@@ -4,8 +4,12 @@ import com.youtube.R
 import com.youtube.player.dashboard.DashboardActivity
 import com.youtube.player.home.HomeAdapter
 import com.youtube.player.home.HomeFragment
+import com.youtube.player.library.LibraryFragment
 import com.youtube.player.player.VideoDetailsFragment
 import com.youtube.player.player.VideoPlayerFragment
+import com.youtube.player.subscriptions.SubscriptionFragment
+import com.youtube.player.trending.TrendingFragment
+import com.youtube.player.useractivity.UserActivityFragment
 
 @RunWith(AndroidJUnit4::class)
 class DashboardActivityTest {
@@ -76,12 +80,14 @@ class DashboardActivityTest {
             }
             R.id.navigation_notifications -> {
 
-                val homeFragment = mDashboardActivity.supportFragmentManager.findFragmentByTag(UserActivityFragment.TAG) as UserActivityFragment
+                val homeFragment = mDashboardActivity.supportFragmentManager.findFragmentByTag(
+                    UserActivityFragment.TAG) as UserActivityFragment
                 assertNotNull(homeFragment)
 
             }
             R.id.navigation_subscription -> {
-                val homeFragment = mDashboardActivity.supportFragmentManager.findFragmentByTag(SubscriptionFragment.TAG) as SubscriptionFragment
+                val homeFragment = mDashboardActivity.supportFragmentManager.findFragmentByTag(
+                    SubscriptionFragment.TAG) as SubscriptionFragment
                 assertNotNull(homeFragment)
 
             }
